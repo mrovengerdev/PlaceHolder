@@ -9,10 +9,10 @@ from io import BytesIO
 S3_BUCKET_URL = "https://vcthackathon-data.s3.us-west-2.amazonaws.com"
 
 # (game-changers, vct-international, vct-challengers)
-LEAGUE = "game-changers"
+LEAGUE = "vct-international"
 
 # (2022, 2023, 2024)
-YEAR = 2022
+YEAR = 2024
 
 
 def download_gzip_and_write_to_json(file_name):
@@ -64,15 +64,15 @@ def download_games():
     game_counter = 0
 
     for esports_game in mappings_data:
-        s3_game_file = f"{LEAGUE}/games/{YEAR}/{esports_game["platformGameId"]}"
+        s3_game_file = f"{LEAGUE}/games/{YEAR}/{esports_game['platformGameId']}"
 
         response = download_gzip_and_write_to_json(s3_game_file)
 
         if (response == True):
             game_counter += 1
             if game_counter % 10 == 0:
-                print(f"----- Processed {game_counter} games, current run time: {
-                round((time.time() - start_time) / 60, 2)} minutes")
+                print(f"----- Processed {game_counter} games, current run time: {round((time.time() - start_time) / 60, 2)} minutes")
+
 
 
 if __name__ == "__main__":
