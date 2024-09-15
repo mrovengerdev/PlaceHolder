@@ -11,18 +11,25 @@ import json
 import os
 
 class Vlr:
-    print("test")
     def file_maker(self, url, result):
-        print("Here it is running")
-        pattern = r"(?<=\.gg\/)[^\/]+"
-        type = re.search(pattern, url)
-        home_directory = os.path.expanduser("~")
-        if type:
-            file_name = f"{home_directory}/Desktop/vlrggapi/output/{type}.json" # Need to fix output path
-            print(file_name)
+        output_directory = os.path.join(os.getcwd(), 'output')
+
+        # Ensure the output directory exists, create it if necessary
+        os.makedirs(output_directory, exist_ok=True)
+
+        # Retrieve ID number for endpoint to name output json
+        pattern = r"/(\d+)"
+        match = re.search(pattern, url)
+        
+
+        if match:
+            file_name = os.path.join(output_directory, f"{match.group(1)}.json")
+            # Write data into json file
             with open(file_name, 'w') as file:
                 json.dump(result, file, indent=4)
-            print(f"List written to {file_name}")
+            print(f"Data from {url} written to: {file_name}")
+        else:
+            print("No match found in the URL.")
 
     def get_parse(self, url):
         """
