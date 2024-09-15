@@ -1,0 +1,53 @@
+body {
+    background: radial-gradient(circle,#ab1c1c, #220e09); /* Blend two colors from left to right */
+}
+
+h1 {
+    color: rgb(222, 158, 158);
+    font-size: 80px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+/* Keyframe animation for text fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.centered-text, .flex-container {
+    animation: fadeIn 3s ease-in-out;
+}
+
+.centered-text{
+    text-align: center;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+}
+
+.search-container {
+    display: flex; /* Aligns input and button in a row */
+    justify-content: center; /* Centers the search bar horizontally */
+    color: rgb(168, 47, 47);
+    margin: 10px; /* Adds some space around the search bar */
+    margin-top: 30px;
+}
+
+/* Styling for the search input */
+.search-input {
+    width: 500px; /* Width of the search input */
+    padding: 20px; /* Adds space inside the input */
+    border: 2px solid #ffffff; /* Border around the input */
+    border-radius: 40px 40px 40px 40px; /* Rounded corners on the left side */
+    font-size: 16px; /* Font size inside the input */
+}
